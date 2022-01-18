@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Appraisals</title>
+    <link rel="stylesheet" href="http://localhost:8080/all-view.css">
+</head>
+<body>
+    <div id="header">
+        <p id="nameHead">Appraisals</p>
+    </div>
+
+    <div id="left">
+        <a href="/" id="homePage" class="leftBtn">Home page</a>
+        <br>
+        <a sec:authorize="hasRole('ADMIN') or hasRole('TEACHER')"
+           th:href="@{/appraisal/add(disciplineId=0, studentNumber=${attributes.studentNumber})}"
+           title="Add appraisal" id ="add" class="leftBtn" >Add appraisal</a>
+    </div>
+
+
+<div id="main">
+    <table id="table">
+        <caption id="caption" th:text="${attributes.studentFullName +
+        ' (' + attributes.studentNumber + ')'}"></caption>
+
+    <thead>
+         <tr>
+             <th>Discipline</th>
+             <th>Score</th>
+             <th>Operations</th>
+         </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="appr : ${allAppraisal}">
+        <td th:text="${appr.getDiscipline().getDisciplineName()}"></td>
+        <td th:text="${appr.getScore()}"></td>
+
+        <td><a sec:authorize="hasRole('ADMIN') or hasRole('TEACHER')" th:href="@{/appraisal/update(id=${appr.getId()})}" title="Update appraisal" class="updDel">Update</a>
+            <br>
+        <a sec:authorize="hasRole('ADMIN') or hasRole('TEACHER')" th:href="@{/appraisal/delete(id=${appr.getId()})}" title="Delete appraisal" class="updDel">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+</div>
+
+<div id="aside">
+    <form th:method="GET" th:action="@{/appraisal/select}" th:object="${attributes}">
+        <input type="hidden" th:field="*{disciplineId}">
+        <input type="hidden" th:field="*{studentNumber}">
+        <input type="hidden" th:field="*{studentFullName}">
+
+        <label for="inputDiscipline">Discipline:</label>
+        <input type="text" th:field="*{discipline}" class="inputSelect" id="inputDiscipline">
+        <br><br>
+
+        <label for="inputScoreFrom">Score from:</label>
+        <input type="number" th:field="*{scoreFrom}" class="inputSelect" id="inputScoreFrom">
+        <br><br>
+
+        <label for="inputScoreTo">Score to:</label>
+        <input type="number" th:field="*{scoreTo}" class="inputSelect" id="inputScoreTo">
+        <br><br>
+
+        <label for="sort">Sort by:</label>
+        <select th:field="*{sort}" class="inputSelect" id="sort">
+            <option th:value="${'without sorting'}"
+                    th:text="${'without sorting'}"/>
+            <option th:value="${'Discipline asc'}"
+                    th:text="${'Discipline asc'}"/>
+            <option th:value="${'Discipline desc'}"
+                    th:text="${'Discipline desc'}"/>
+            <option th:value="${'Score asc'}"
+                    th:text="${'Score asc'}"/>
+            <option th:value="${'Score desc'}"
+                    th:text="${'Score desc'}"/>
+        </select>
+        <br><br>
+
+        <input type="submit" th:value="Select" id="btnSelect">
+    </form>
+</div>
+
+    <div id="footer">stepancupriyanovich@gmail.com</div>
+
+</body>
+</html>

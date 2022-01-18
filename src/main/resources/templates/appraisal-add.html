@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${appraisal.fromUpdate} ? 'Update appraisal' : 'Add appraisal'"></title>
+    <link rel="stylesheet" href="http://localhost:8080/upd-add.css">
+</head>
+<body>
+
+<div id="header">
+    <p id="nameHead" th:text="${appraisal.fromUpdate} ? 'Update appraisal' : 'Add appraisal'"></p>
+</div>
+
+<div id="aside">
+    <form th:method="POST" th:action="@{/appraisal/add}" th:object="${attribute}" id="studentSelect">
+        <input type="hidden" th:field="*{disciplineId}">
+        <input type="hidden" th:field="*{studentNumber}">
+
+        <label for="inputStudentName">Select students by name:</label>
+        <input type="text" th:field="*{studentFullName}" class="inputSelect" id="inputStudentName">
+
+        <input type="submit" value="Select" id="selectBtn">
+    </form>
+</div>
+
+<div id="main">
+<form th:method="POST" th:action="@{/appraisal/save}" th:object="${appraisal}" id="addAttr">
+    <input type="hidden" th:field="*{id}">
+
+    <label for="student">Student:</label>
+    <select th:field="*{studentNumber}" class="inputSelect" id="student">
+        <option th:value="${appraisal.student.studentNumber}"
+                th:text="'(' + ${appraisal.student.studentNumber} + ')' + ' ' +
+                         ${appraisal.student.fullName}"></option>
+
+        <option th:each="student : ${allStudents}"
+                th:value="${student.studentNumber}"
+                th:text="'(' + ${student.studentNumber} + ')' + ' ' +
+                ${student.fullName}"></option>
+    </select>
+    <p th:if="${#fields.hasErrors('studentNumber')}" th:errors="*{studentNumber}" class="error"></p>
+    <br><br>
+
+    <label for="discipline">Discipline:</label>
+    <select th:field="*{disciplineId}" class="inputSelect" id="discipline">
+        <option th:value="${appraisal.discipline.id}"
+                th:text="${appraisal.discipline.disciplineName}"></option>
+        <option th:each="discipline : ${allDisciplines}"
+                th:value="${discipline.id}"
+                th:text="${discipline.disciplineName}"></option>
+    </select>
+    <p th:if="${#fields.hasErrors('disciplineId')}" th:errors="*{disciplineId}" class="error"></p>
+    <br><br>
+
+    <label for="score">Score:</label>
+    <input type="text" th:field="*{score}" class="inputSelect" id="score">
+    <p th:if="${#fields.hasErrors('score')}" th:errors="*{score}" class="error"></p>
+    <br><br>
+
+    <label for="dateAddedId">Date added:</label>
+    <input type="text" th:field="*{dateAdded}" class="inputSelect" id="dateAddedId">
+    <p th:if="${#fields.hasErrors('dateAdded')}" th:errors="*{dateAdded}" class="error"></p>
+    <br><br>
+
+    <input type="submit" value="Ok" id="submitBtn">
+</form>
+</div>
+
+<div id="footer">stepancupriyanovich@gmail.com</div>
+
+</body>
+</html>

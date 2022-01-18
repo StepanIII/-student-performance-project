@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+    <link rel="stylesheet" href="http://localhost:8080/all-view.css">
+
+</head>
+<body>
+
+<div id="header">
+    <p id="nameHead">Students</p>
+</div>
+
+<div id="left">
+    <a href="/" id="homePage" class="leftBtn">Home page</a>
+    <br>
+    <a sec:authorize="hasRole('ADMIN')" th:href="@{/student/add(facultyId=0, groupId=0)}"
+       title="Add student" id ="add" class="leftBtn" >Add student</a>
+</div>
+
+<div id="main">
+    <table id="table">
+
+    <thead>
+         <tr>
+             <th class="studentNumber">Student number</th>
+             <th>Full name</th>
+             <th>Exam points</th>
+             <th>Student group</th>
+             <th>Date of birth</th>
+             <th>City</th>
+             <th>Scholarship</th>
+             <th>Operations</th>
+         </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="student : ${allStudent}">
+        <td th:text="${student.getStudentNumber()}"></td>
+        <td th:text="${student.getFullName()}"></td>
+        <td th:text="${student.getExamPoints()}"></td>
+        <td th:text="${student.getStudentsGroup().getGroupNumber()}"></td>
+        <td th:text="${student.getDateOfBirth()}"></td>
+        <td th:text="${student.getCity()}"></td>
+        <td th:text="${student.getScholarship()}"></td>
+
+        <td><a th:href="@{/appraisal/student_appraisal(id=${student.getStudentNumber()})}"
+               target="_blank" title="Show appraisals" class="updDel">Appraisals</a>
+            <br>
+            <a sec:authorize="hasRole('ADMIN')" th:href="@{/student/update(id=${student.getStudentNumber()}, isFromGroup=${false}, isFromFaculty=${false})}"
+               title="Update student" class="updDel">Update</a>
+
+            <br>
+            <a sec:authorize="hasRole('ADMIN')" th:href="@{/student/delete(id=${student.getStudentNumber()}, isFromGroup=${false}, isFromFaculty=${false})}"
+               title="Delete student" class="updDel">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+</div>
+
+<div id="aside">
+    <form th:method="GET" th:action="@{/student/select}" th:object="${attributes}" id="select">
+        <input type="hidden" th:field="*{groupId}">
+        <input type="hidden" th:field="*{facultyId}">
+
+        <label for="studentNumberId">Student number:</label>
+        <input type="number" th:field="*{studentNumber}" class="inputSelect" id="studentNumberId">
+        <br><br>
+
+        <label for="fullNameId">Full name:</label>
+        <input type="text" th:field="*{fullName}" class="inputSelect"  id="fullNameId">
+        <br><br>
+
+        <label for="examPointsFromId">Exam points from:</label>
+        <input type="number" th:field="*{examPointsFrom}" class="inputSelect" id="examPointsFromId">
+        <br><br>
+
+        <label for="examPointsToId">Exam points to:</label>
+        <input type="number" th:field="*{examPointsTo}" class="inputSelect" id="examPointsToId">
+        <br><br>
+
+        <label for="studentGroupNameId">Student group name:</label>
+        <input type="text" th:field="*{studentGroupName}" class="inputSelect" id="studentGroupNameId">
+        <br><br>
+
+        <label for="dateOfBirthFromId">Date of birth from:</label>
+        <input type="text" th:field="*{dateOfBirthFrom}" class="inputSelect" id="dateOfBirthFromId">
+        <br><br>
+
+        <label for="dateOfBirthToId">Date of birth to:</label>
+        <input type="text" th:field="*{dateOfBirthTo}" class="inputSelect" id="dateOfBirthToId">
+        <br><br>
+
+        <label for="cityId">City:</label>
+        <input type="text" th:field="*{city}" class="inputSelect" id="cityId">
+        <br><br>
+
+        <label for="scholarshipFromId">Scholarship from:</label>
+        <input type="number" th:field="*{scholarshipFrom}" class="inputSelect" id="scholarshipFromId">
+        <br><br>
+
+        <label for="scholarshipToId">Scholarship to:</label>
+        <input type="number" th:field="*{scholarshipTo}" class="inputSelect"  id="scholarshipToId">
+        <br><br>
+
+        <label for="sort">Sort by:</label>
+        <select th:field="*{sort}" class="inputSelect" id="sort">
+            <option th:value="${'without sorting'}"
+                    th:text="${'without sorting'}"></option>
+            <option th:value="${'Student number asc'}"
+                    th:text="${'Student number asc'}"></option>
+            <option th:value="${'Student number desc'}"
+                    th:text="${'Student number desc'}"></option>
+            <option th:value="${'Full name asc'}"
+                    th:text="${'Full name asc'}"></option>
+            <option th:value="${'Full name desc'}"
+                    th:text="${'Full name desc'}"></option>
+            <option th:value="${'Exam points asc'}"
+                    th:text="${'Exam points asc'}"></option>
+            <option th:value="${'Exam points desc'}"
+                    th:text="${'Exam points desc'}"></option>
+            <option th:value="${'Students group asc'}"
+                    th:text="${'Students group asc'}"></option>
+            <option th:value="${'Students group desc'}"
+                    th:text="${'Students group desc'}"></option>
+            <option th:value="${'Date of birth asc'}"
+                    th:text="${'Date of birth asc'}"></option>
+            <option th:value="${'Date of birth desc'}"
+                    th:text="${'Date of birth desc'}"></option>
+            <option th:value="${'City asc'}"
+                    th:text="${'City asc'}"></option>
+            <option th:value="${'City desc'}"
+                    th:text="${'City desc'}"></option>
+            <option th:value="${'Scholarship asc'}"
+                    th:text="${'Scholarship asc'}"></option>
+            <option th:value="${'Scholarship desc'}"
+                    th:text="${'Scholarship desc'}"></option>
+        </select>
+        <br><br>
+
+        <input type="submit" th:value="Select" id="btnSelect">
+    </form>
+</div>
+
+<div id="footer">stepancupriyanovich@gmail.com</div>
+
+</body>
+</html>

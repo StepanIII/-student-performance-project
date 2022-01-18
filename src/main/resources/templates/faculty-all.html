@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Faculties</title>
+    <link rel="stylesheet" href="http://localhost:8080/all-view.css">
+</head>
+<body>
+    <div id="header">
+        <p id="nameHead">Faculties</p>
+    </div>
+
+    <div id="left">
+        <a href="/" id="homePage" class="leftBtn">Home page</a>
+        <br>
+        <a sec:authorize="hasRole('ADMIN')" th:href="@{/faculty/add}"
+        title="Add faculty" id="add" class="leftBtn">Add faculty</a>
+    </div>
+
+
+<div id="main">
+    <table id="table">
+
+    <thead>
+         <tr>
+             <th>Name faculty</th>
+             <th>Dean</th>
+             <th>Operations</th>
+         </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="faculty : ${allFaculty}">
+        <td th:text="${faculty.facultyName}"></td>
+        <td th:text="${faculty.dean}"></td>
+        <td><a th:href="@{/students_group/faculty_groups(id=${faculty.id})}"
+               target="_blank" title="Show groups" class="updDel">Groups</a>
+            <br>
+            <a th:href="@{/student/faculty_students(id=${faculty.id})}"
+               target="_blank" title="Show students" class="updDel">Students</a>
+            <br>
+            <a sec:authorize="hasRole('ADMIN')" th:href="@{/faculty/update(id=${faculty.id})}"
+               title="Update appraisal" class="updDel">Update</a>
+            <br>
+        <a sec:authorize="hasRole('ADMIN')" th:href="@{/faculty/delete(id=${faculty.id})}"
+           title="Delete appraisal" class="updDel">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+</div>
+
+<div id="aside">
+    <form th:method="GET" th:action="@{/faculty/select}" th:object="${attributes}" id="select">
+
+        <label for="inputFacultyName">Faculty name:</label>
+        <input type="text" th:field="*{facultyName}" class="inputSelect" id="inputFacultyName">
+        <br><br>
+
+        <label for="inputDeanFullName">Dean full name:</label>
+        <input type="text" th:field="*{deanFullName}" class="inputSelect" id="inputDeanFullName">
+        <br><br>
+
+        <label for="sort">Sort by:</label>
+        <select th:field="*{sort}" class="inputSelect" id="sort">
+            <option th:value="${'without sorting'}"
+                    th:text="${'without sorting'}"/>
+            <option th:value="${'Faculty name asc'}"
+                    th:text="${'Faculty name asc'}"/>
+            <option th:value="${'Faculty name desc'}"
+                    th:text="${'Faculty name desc'}"/>
+            <option th:value="${'Dean asc'}"
+                    th:text="${'Dean asc'}"/>
+            <option th:value="${'Dean desc'}"
+                    th:text="${'Dean desc'}"/>
+        </select>
+        <br><br>
+
+        <input type="submit" th:value="Select" id="btnSelect">
+    </form>
+</div>
+
+    <div id="footer">stepancupriyanovich@gmail.com</div>
+
+</body>
+</html>

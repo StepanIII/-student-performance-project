@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Disciplines</title>
+    <link rel="stylesheet" href="http://localhost:8080/all-view.css">
+</head>
+<body>
+    <div id="header">
+        <p id="nameHead">Disciplines</p>
+    </div>
+
+    <div id="left">
+        <a href="/" id="homePage" class="leftBtn">Home page</a>
+        <br>
+        <a sec:authorize="hasRole('ADMIN')" th:href="@{/discipline/add}"
+           title="Add discipline" id ="add" class="leftBtn" >Add discipline</a>
+    </div>
+
+<div id="main">
+    <table id="table">
+
+    <thead>
+         <tr>
+             <th>Name discipline</th>
+             <th>Hour</th>
+             <th>Operations</th>
+         </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="discipline : ${allDiscipline}">
+        <td th:text="${discipline.getDisciplineName()}"></td>
+        <td th:text="${discipline.getHour()}"></td>
+        <td><a th:href="@{/appraisal/discipline_appraisal(id=${discipline.getId()})}" target="_blank" title="Show appraisals" class="updDel">Appraisals</a>
+            <br>
+            <a sec:authorize="hasRole('ADMIN')"  th:href="@{/discipline/update(id=${discipline.getId()})}" title="Update discipline" class="updDel">Update</a>
+            <br>
+        <a sec:authorize="hasRole('ADMIN')" th:href="@{/discipline/delete(id=${discipline.getId()})}" title="Delete discipline" class="updDel">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+</div>
+
+<div id="aside">
+    <form th:method="GET" th:action="@{/discipline/select}" th:object="${attributes}" id="select">
+
+        <label for="inputDisciplineId">Discipline name:</label>
+        <input type="text" th:field="*{disciplineName}" class="inputSelect" id="inputDisciplineId">
+        <br><br>
+
+        <label for="inputHourFrom">Hour from:</label>
+        <input type="number" th:field="*{hourFrom}" class="inputSelect" id="inputHourFrom">
+        <br><br>
+
+        <label for="inputHourTo">Hour to:</label>
+        <input type="number" th:field="*{hourTo}" class="inputSelect" id="inputHourTo">
+        <br><br>
+
+        <label for="sort">Sort by:</label>
+        <select th:field="*{sort}" class="inputSelect" id="sort">
+            <option th:value="${'without sorting'}"
+                    th:text="${'without sorting'}"></option>
+            <option th:value="${'Discipline name asc'}"
+                    th:text="${'Discipline name asc'}"></option>
+            <option th:value="${'Discipline name desc'}"
+                    th:text="${'Discipline name desc'}"></option>
+            <option th:value="${'Hour asc'}"
+                    th:text="${'Hour asc'}"></option>
+            <option th:value="${'Hour desc'}"
+                    th:text="${'Hour desc'}"></option>
+        </select>
+        <br><br>
+
+        <input type="submit" th:value="Select" id="btnSelect">
+    </form>
+</div>
+
+    <div id="footer">stepancupriyanovich@gmail.com</div>
+
+</body>
+</html>

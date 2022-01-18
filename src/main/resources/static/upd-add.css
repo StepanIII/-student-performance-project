@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: #071d42;
+}
+#header, #footer{
+    width: 100%;
+    height: 100px;
+    border-bottom: 1px solid #128200;
+    background: #071d42;
+    color: #071d42;
+    line-height: 100px;
+    margin-bottom: 50px;
+    float: left;
+    text-align: center;
+}
+
+#nameHead{
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 1px 0 1px #128200,
+    0 1px 1px #128200,
+    -1px 0 1px #128200,
+    0 -1px 1px #128200;
+}
+
+#footer{
+    margin-bottom: 0;
+    margin-top: 100px;
+    border-bottom: 0;
+    border-top: 1px solid #128200;
+    float: bottom;
+    color: #42a1ff;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+#aside{
+    width: 15%;
+    padding: 10px 2.5%;
+    margin-right: 10%;
+    float: right;
+}
+
+#main{
+    width: 25%;
+    margin-left: 40%;
+    padding: 10px 2.5%;
+    float: left;
+}
+
+#addAttr, #studentSelect, #groupSelect{
+    float: left;
+    color: #42a1ff;
+    font-size: 20px;
+}
+
+.inputSelect{
+    background-color: transparent;
+    border-left: transparent;
+    border-top: transparent;
+    border-right: transparent;
+    border-bottom: 1px solid #42a1ff;
+    padding: 2px 2px;
+    color: #d5dee0;
+    font-size: 15px;
+}
+
+.inputSelect:focus{
+    outline: 1px solid #42a1ff;
+}
+
+option{
+    background-color: #071d42;
+}
+
+#submitBtn, #selectBtn{
+    color: azure;
+    padding: 2% 5%;
+    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    background-color: #071d42;
+    border: 2px solid #128200;
+    text-decoration: none;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 10%;
+}
+
+#selectBtn{
+    position: relative;
+    top: 20px
+}
+
+#submitBtn:after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    width: 0;
+    height: 100%;
+    background: #128200;
+    z-index: -1;
+    -webkit-transition: width 150ms ease-in-out;
+    transition: width 150ms ease-in-out;
+}
+
+#selectBtn:after{
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    width: 0;
+    height: 100%;
+    background: #128200;
+    z-index: -1;
+    -webkit-transition: width 150ms ease-in-out;
+    transition: width 150ms ease-in-out;
+}
+#submitBtn:hover {
+    box-shadow: 0 0 40px 40px #128200 inset;
+}
+#selectBtn:hover{
+    box-shadow: 0 0 40px 40px #128200 inset;
+}
+
+.error{
+    color: brown;
+}

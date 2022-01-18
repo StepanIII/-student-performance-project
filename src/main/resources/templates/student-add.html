@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${student.fromUpdate} ? 'Update student' : 'Add student'"></title>
+    <link rel="stylesheet" href="http://localhost:8080/upd-add.css">
+</head>
+<body>
+
+<div id="header">
+    <p id="nameHead" th:text="${student.fromUpdate} ? 'Update student' : 'Add student'"></p>
+</div>
+
+<div id="aside">
+    <form th:method="GET" th:action="@{/student/add}" th:object="${attribute}" id="groupSelect">
+        <input type="hidden" th:field="*{facultyId}">
+        <input type="hidden" th:field="*{groupId}">
+
+        <label for="groupNameId">Select group by name:</label>
+        <input type="text" th:field="*{studentGroupName}" id="groupNameId" class="inputSelect">
+
+        <input type="submit" value="Select" id="selectBtn">
+    </form>
+</div>
+
+<div id="main">
+<form th:method="POST" th:action="@{/student/save}" th:object="${student}" id="addAttr">
+    <input type="hidden" th:field="*{studentNumber}">
+    <input type="hidden" th:field="*{fromGroup}">
+    <input type="hidden" th:field="*{fromFaculty}">
+
+    <label for="studentNumber">Student number:</label>
+    <input type="text" th:field="*{studentNumber}" id="studentNumber" class="inputSelect" disabled>
+    <br><br>
+
+    <label for="fullName">Full name:</label>
+    <input type="text" th:field="*{fullName}" id="fullName" class="inputSelect">
+    <p th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}" class="error"></p>
+    <br><br>
+
+    <label for="examPoints">Exam points:</label>
+    <input type="text" th:field="*{examPoints}" id="examPoints" class="inputSelect">
+    <p th:if="${#fields.hasErrors('examPoints')}" th:errors="*{examPoints}" class="error"></p>
+    <br><br>
+
+    <label for="studentGroup">Student group:</label>
+    <select th:field="*{groupId}" id="studentGroup" class="inputSelect">
+        <option th:value="${student.getStudentsGroup().getId()}"
+                th:text="${student.getStudentsGroup().getGroupNumber()}"></option>
+        <option th:each="group : ${allStudentsGroups}"
+                th:value="${group.getId()}"
+                th:text="${group.getGroupNumber()}"></option>
+    </select>
+    <p th:if="${#fields.hasErrors('groupId')}" th:errors="*{groupId}" class="error"></p>
+    <br><br>
+
+    <label for="dateOfBirth">Date of birth:</label>
+    <input type="text" th:field="*{dateOfBirth}" id="dateOfBirth" class="inputSelect">
+    <p th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}" class="error"></p>
+    <br><br>
+
+    <label for="city">City:</label>
+    <input type="text" th:field="*{city}" id="city" class="inputSelect">
+    <p th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="error"></p>
+    <br><br>
+
+    <label for="scholarship">Scholarship:</label>
+    <input type="text" th:field="*{scholarship}" id="scholarship" class="inputSelect">
+    <p th:if="${#fields.hasErrors('scholarship')}" th:errors="*{scholarship}" class="error"></p>
+    <br><br>
+
+    <input type="submit" value="Ok" id="submitBtn">
+</form>
+</div>
+
+<div id="footer">stepancupriyanovich@gmail.com</div>
+
+</body>
+</html>

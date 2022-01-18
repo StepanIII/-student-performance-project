@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Appraisals</title>
+    <link rel="stylesheet" href="http://localhost:8080/all-view.css">
+</head>
+<body>
+    <div id="header">
+        <p id="nameHead">Appraisals</p>
+    </div>
+
+    <div id="left">
+        <a href="/" id="homePage" class="leftBtn">Home page</a>
+        <br>
+        <a sec:authorize="hasRole('ADMIN') or hasRole('TEACHER')"
+           th:href="@{/appraisal/add(disciplineId=0, studentNumber=0)}"
+           title="Add appraisal" id ="add" class="leftBtn" >Add appraisal</a>
+    </div>
+
+    <div id="main">
+        <table id="table">
+
+            <thead>
+            <tr>
+                <th>Student number</th>
+                <th>Student full name</th>
+                <th>Discipline</th>
+                <th>Score</th>
+                <th>Date added</th>
+                <th>Operations</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="appr : ${allAppraisal}">
+                <td th:text="${appr.student.studentNumber}"></td>
+                <td th:text="${appr.student.fullName}"></td>
+                <td th:text="${appr.discipline.disciplineName}"></td>
+                <td th:text="${appr.score}"></td>
+                <td th:text="${appr.dateAdded}"></td>
+
+                <td><a sec:authorize="hasRole('ADMIN') or hasRole('TEACHER')" th:href="@{/appraisal/update(id=${appr.id})}" title="Update appraisal" class="updDel">Update</a>
+                    <br>
+                    <a sec:authorize="hasRole('ADMIN') or hasRole('TEACHER')"th:href="@{/appraisal/delete(id=${appr.id})}" title="Delete appraisal" class="updDel">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="aside">
+        <form th:method="GET" th:action="@{/appraisal/select}" th:object="${attributes}" id="select">
+
+        <input type="hidden" th:field="*{disciplineId}">
+        <input type="hidden" th:field="*{studentNumber}">
+
+        <label for="inputNumber">Student number:</label>
+        <input type="text" th:field="*{studentNumber}" class="inputSelect" id="inputNumber">
+        <br><br>
+
+        <label for="inputFullName">Student full name:</label>
+        <input type="text" th:field="*{studentFullName}" class="inputSelect" id="inputFullName">
+        <br><br>
+
+        <label for="inputDiscipline">Discipline:</label>
+        <input type="text" th:field="*{discipline}" class="inputSelect" id="inputDiscipline">
+        <br><br>
+
+        <label for="inputScoreFrom">Score from:</label>
+        <input type="number" th:field="*{scoreFrom}" class="inputSelect" id="inputScoreFrom">
+        <br><br>
+
+        <label for="inputScoreTo">Score to:</label>
+        <input type="number" th:field="*{scoreTo}" class="inputSelect" id="inputScoreTo">
+        <br><br>
+
+        <label for="inputDateFrom">Date added from:</label>
+        <input type="text" th:field="*{dateAddedFrom}" class="inputSelect" id="inputDateFrom">
+        <br><br>
+
+        <label for="inputDateTo">Date added to:</label>
+        <input type="text" th:field="*{dateAddedTo}" class="inputSelect" id="inputDateTo">
+        <br><br>
+
+        <label for="sort">Sort by:</label>
+        <select th:field="*{sort}" class="inputSelect" id="sort">
+            <option th:value="${'without sorting'}"
+                    th:text="${'without sorting'}"></option>
+            <option th:value="${'Student asc'}"
+                    th:text="${'Student number asc'}"></option>
+            <option th:value="${'Student desc'}"
+                    th:text="${'Student number desc'}"></option>
+            <option th:value="${'Student asc'}"
+                    th:text="${'Student full name asc'}"></option>
+            <option th:value="${'Student desc'}"
+                    th:text="${'Student full name desc'}"></option>
+            <option th:value="${'Discipline asc'}"
+                    th:text="${'Discipline asc'}"></option>
+            <option th:value="${'Discipline desc'}"
+                    th:text="${'Discipline desc'}"></option>
+            <option th:value="${'Score asc'}"
+                    th:text="${'Score asc'}"></option>
+            <option th:value="${'Score desc'}"
+                    th:text="${'Score desc'}"></option>
+            <option th:value="${'Date added asc'}"
+                    th:text="${'Date added asc'}"></option>
+            <option th:value="${'Date added desc'}"
+                    th:text="${'Date added desc'}"></option>
+        </select>
+        <br><br>
+
+        <input type="submit" th:value="Select" id="btnSelect">
+        </form>
+    </div>
+
+    <div id="footer">stepancupriyanovich@gmail.com</div>
+
+</body>
+</html>

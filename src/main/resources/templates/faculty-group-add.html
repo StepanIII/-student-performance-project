@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Add students group</title>
+    <link rel="stylesheet" href="http://localhost:8080/upd-add.css">
+</head>
+<body>
+
+<div id="header">
+    <p id="nameHead" th:text="${'Add group to faculty: ' + studentsGroup.faculty.facultyName}"></p>
+</div>
+
+<div id="main">
+<form th:method="POST" th:action="@{/students_group/save}" th:object="${studentsGroup}" id="addAttr">
+    <input type="hidden" th:field="*{id}" id="studentsGroupId">
+    <input type="hidden" th:field="*{fromFaculty}">
+    <input type="hidden" th:field="*{facultyId}">
+
+        <label for="studentsGroupNumber">Name students group:</label>
+        <input type="text" th:field="*{groupNumber}" id="studentsGroupNumber" class="inputSelect">
+        <p th:if="${#fields.hasErrors('groupNumber')}" th:errors="*{groupNumber}" class="error"></p>
+    <br><br>
+
+    <label for="yearOfCreation">Year of creation:</label>
+    <input type="text" th:field="*{yearOfCreation}" id="yearOfCreation" class="inputSelect">
+    <p th:if="${#fields.hasErrors('yearOfCreation')}" th:errors="*{yearOfCreation}" class="error"></p>
+    <br><br>
+
+    <input type="submit" value="Add" id="submitBtn">
+</form>
+</div>
+
+<div id="footer">stepancupriyanovich@gmail.com</div>
+
+</body>
+</html>

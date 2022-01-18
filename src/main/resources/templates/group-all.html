@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Students groups</title>
+    <link rel="stylesheet" href="http://localhost:8080/all-view.css">
+
+</head>
+<body>
+<div id="header">
+    <p id="nameHead">Students groups</p>
+</div>
+
+<div id="left">
+    <a href="/" id="homePage" class="leftBtn">Home page</a>
+    <br>
+    <a sec:authorize="hasRole('ADMIN')" th:href="@{/students_group/add(facultyId=0)}"
+    title="Add students group" id="add" class="leftBtn">Add group</a>
+</div>
+
+<div id="main">
+    <table id="table">
+
+    <thead>
+         <tr>
+             <th>Group number</th>
+             <th>Faculty</th>
+             <th>Year of creation</th>
+             <th>Operations</th>
+         </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="group : ${allStudentsGroup}">
+        <td th:text="${group.getGroupNumber()}"></td>
+        <td th:text="${group.getFaculty().getFacultyName()}"></td>
+        <td th:text="${group.getYearOfCreation()}"></td>
+        <td>
+            <a th:href="@{/student/group_students(id=${group.getId()})}"
+               target="_blank" title="Show students" class="updDel">Students</a>
+            <br>
+            <a sec:authorize="hasRole('ADMIN')" th:href="@{/students_group/update(id=${group.getId()},isFromFaculty=${false})}"
+               title="Update students group" class="updDel">Update</a>
+            <br>
+            <a sec:authorize="hasRole('ADMIN')" th:href="@{/students_group/delete(id=${group.getId()}, isFromFaculty=${false})}"
+               title="Delete students group" class="updDel">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+</div>
+
+<div id="aside">
+    <form th:method="GET" th:action="@{/students_group/select}" th:object="${attributes}">
+        <input type="hidden" th:field="*{facultyId}">
+
+        <label for="groupNumberId">Group number:</label>
+        <input type="text" th:field="*{groupNumber}" class="inputSelect" id="groupNumberId">
+        <br><br>
+
+        <label for="facultyId">Faculty name:</label>
+        <input type="text" th:field="*{facultyName}" class="inputSelect" id="facultyId">
+        <br><br>
+
+        <label for="yearFromId">Year from:</label>
+        <input type="text" th:field="*{yearFrom}" class="inputSelect" id="yearFromId">
+        <br><br>
+
+        <label for="yearToId">Year to:</label>
+        <input type="text" th:field="*{yearTo}" class="inputSelect" id="yearToId">
+        <br><br>
+
+        <label for="sort">Sort by:</label>
+        <select th:field="*{sort}" class="inputSelect" id="sort">
+            <option th:value="${'without sorting'}"
+                    th:text="${'without sorting'}"></option>
+            <option th:value="${'Group number asc'}"
+                    th:text="${'Group number asc'}"></option>
+            <option th:value="${'Group number desc'}"
+                    th:text="${'Group number desc'}"></option>
+            <option th:value="${'Faculty asc'}"
+                    th:text="${'Faculty asc'}"></option>
+            <option th:value="${'Faculty desc'}"
+                    th:text="${'Faculty desc'}"></option>
+            <option th:value="${'Year of creation asc'}"
+                    th:text="${'Year of creation asc'}"></option>
+            <option th:value="${'Year of creation desc'}"
+                    th:text="${'Year of creation desc'}"></option>
+        </select>
+        <br><br>
+
+        <input type="submit" th:value="Select" id="btnSelect">
+    </form>
+</div>
+
+<div id="footer">stepancupriyanovich@gmail.com</div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Add appraisal</title>
+    <link rel="stylesheet" href="http://localhost:8080/upd-add.css">
+</head>
+<body>
+
+<div id="header">
+    <p id="nameHead" th:text="${'Add appraisal to student: ' + appraisal.student.fullName}"></p>
+</div>
+
+<div id="main">
+<form th:method="POST" th:action="@{/appraisal/save}" th:object="${appraisal}" id="addAttr">
+    <input type="hidden" th:field="*{id}" id="appraisalId">
+    <input type="hidden" th:field="*{studentNumber}" id="studentNumber">
+
+    <label for="discipline">Discipline:</label>
+    <select th:field="*{disciplineId}" id="discipline" class="inputSelect">
+        <option th:value="${appraisal.discipline.id}"
+                th:text="${appraisal.discipline.disciplineName}"></option>
+        <option th:each="discipline : ${allDisciplines}"
+                th:value="${discipline.id}"
+                th:text="${discipline.disciplineName}"></option>
+    </select>
+    <p th:if="${#fields.hasErrors('disciplineId')}" th:errors="*{disciplineId}" class="error"></p>
+    <br><br>
+
+    <label for="score">Score:</label>
+    <input type="text" th:field="*{score}" id="score" class="inputSelect">
+    <p th:if="${#fields.hasErrors('score')}" th:errors="*{score}" class="error"></p>
+    <br><br>
+
+    <label for="dateAddedId">Date added:</label>
+    <input type="text" th:field="*{dateAdded}" id="dateAddedId" class="inputSelect">
+    <p th:if="${#fields.hasErrors('dateAdded')}" th:errors="*{dateAdded}" class="error"></p>
+    <br><br>
+
+    <input type="submit" value="Add" id="submitBtn">
+</form>
+</div>
+
+<div id="footer">stepancupriyanovich@gmail.com</div>
+
+</body>
+</html>

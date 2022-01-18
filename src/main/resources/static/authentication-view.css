@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: #071d42;
+}
+#header, #footer{
+    width: 100%;
+    height: 100px;
+    border-bottom: 1px solid #128200;
+    background: #071d42;
+    color: #071d42;
+    line-height: 100px;
+    margin-bottom: 50px;
+    float: left;
+    text-align: center;
+}
+
+#nameHead{
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 1px 0 1px #128200,
+    0 1px 1px #128200,
+    -1px 0 1px #128200,
+    0 -1px 1px #128200;
+}
+
+#footer{
+    margin-bottom: 0;
+    margin-top: 100px;
+    border-bottom: 0;
+    border-top: 1px solid #128200;
+    float: bottom;
+    color: #42a1ff;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+#main{
+    width: 20%;
+    margin-left: 42%;
+    padding: 10px 2.5%;
+    float: left;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #42a1ff;;
+}
+
+input{
+    float: left;
+    background-color: azure;
+    border-left: transparent;
+    border-top: transparent;
+    border-right: transparent;
+    border-bottom: transparent;
+    border-radius: 5%;
+    padding: 2px 2px;
+    color: black;
+    font-size: 15px;
+}
+
+input:focus{
+    outline: 1px solid #42a1ff;
+}
+
+label{
+    float: left;
+}
+
+#submitBtn{
+    cursor: pointer;
+}
+
+a{
+    float: left;
+    text-decoration: none;
+    font-size: 18px;
+    color: #42a1ff;
+}
+
+a:hover{
+    text-decoration: underline;
+    color: #42a1ff;
+}
+
+.error{
+    float: left;
+    color: brown;
+    font-size: 18px;
+    font-weight: normal;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${discipline.fromUpdate} ? 'Update discipline' : 'Add discipline'"></title>
+    <link rel="stylesheet" href="http://localhost:8080/upd-add.css">
+</head>
+<body>
+
+<div id="header">
+    <p id="nameHead" th:text="${discipline.fromUpdate} ? 'Update discipline' : 'Add discipline'"></p>
+</div>
+
+<div id="main">
+<form th:method="POST" th:action="@{/discipline/save}" th:object="${discipline}" id="addAttr">
+    <input type="hidden" th:field="*{id}" id="disciplineId">
+
+    <label for="disciplineName">Name discipline:</label>
+    <input type="text" th:field="*{disciplineName}" class="inputSelect" id="disciplineName">
+    <p th:if="${#fields.hasErrors('disciplineName')}" th:errors="*{disciplineName}" class="error"></p>
+    <br><br>
+
+    <label for="hour">Hour:</label>
+    <input type="text" th:field="*{hour}" class="inputSelect" id="hour">
+    <p th:if="${#fields.hasErrors('hour')}" th:errors="*{hour}" class="error"></p>
+    <br><br>
+    <input type="submit" value="Ok" id="submitBtn">
+</form>
+</div>
+
+<div id="footer">stepancupriyanovich@gmail.com</div>
+
+</body>
+</html>
