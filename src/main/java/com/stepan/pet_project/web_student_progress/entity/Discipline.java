@@ -5,6 +5,11 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
+/**
+ * @author Cupriyanovich Stepan
+ * @version 1.0
+ */
+
 @Entity
 @Table(name = "disciplines")
 @Data

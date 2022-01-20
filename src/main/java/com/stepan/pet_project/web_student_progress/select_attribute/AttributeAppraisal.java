@@ -10,6 +10,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+/**
+ * @author Cupriyanovich Stepan
+ * @version 1.0
+ */
+
 @Component
 @Data
 public class AttributeAppraisal implements Attribute{
@@ -20,31 +25,20 @@ public class AttributeAppraisal implements Attribute{
 
     private String discipline;
 
-    private short scoreFrom;
-    private short scoreTo;
+    private short scoreFrom = 0;
+    private short scoreTo = 5;
 
-    private String dateAddedFrom;
-    private String dateAddedTo;
+    private String dateAddedFrom = "1950-01-01";
+    private String dateAddedTo = "2023-01-01";
 
     private String sort;
 
     private long disciplineId;
 
     public AttributeAppraisal() {
-        this.studentNumber = 0;
-        this.studentFullName = "";
-        this.discipline = "";
-
-        this.scoreFrom = 0;
-        this.scoreTo = 5;
-
-        this.dateAddedFrom = "1950-01-01";
-        this.dateAddedTo = "2023-01-01";
-
-        this.sort = "";
-        this.disciplineId = 0;
     }
 
+    @Override
     public void resetAttributes() {
         this.studentNumber = 0;
         this.studentFullName = "";

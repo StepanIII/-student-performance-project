@@ -8,6 +8,11 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Calendar;
 import java.util.List;
 
+/**
+ * @author Cupriyanovich Stepan
+ * @version 1.0
+ */
+
 public interface StudentService {
     List<Student> getAllStudent();
 
@@ -30,14 +35,6 @@ public interface StudentService {
             Calendar dateOfBirthFrom, Calendar dateOfBirthTo,
             String city, float scholarshipFrom, float scholarshipTo,
             String sortBy);
-
-//    Short getMaxExamPoint();
-//
-//    Float getMaxScholarship();
-//
-//    String getMaxDateOfBirth();
-//
-//    String getMinDateOfBirth();
 
     List<Student> getStudentsByAttrAndGroupIdBySort(
             long studentNumber, String fullName,

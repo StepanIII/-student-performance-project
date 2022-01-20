@@ -10,6 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * @author Cupriyanovich Stepan
+ * @version 1.0
+ */
+
 public interface FacultyRepository extends JpaRepository<Faculty, Long> {
 
     @Transactional(readOnly = true)

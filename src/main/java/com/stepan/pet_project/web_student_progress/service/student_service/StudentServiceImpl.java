@@ -11,6 +11,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+/**
+ * @author Cupriyanovich Stepan
+ * @version 1.0
+ */
+
 @Service
 public class StudentServiceImpl implements StudentService{
 
@@ -48,42 +53,6 @@ public class StudentServiceImpl implements StudentService{
         }
         return studentRepository.getStudentsByAttributesBySort(studentNumber, fullName, examPointsFrom, examPointsTo, studentGroupName, dateOfBirthFrom, dateOfBirthTo, city, scholarshipFrom, scholarshipTo, sort);
     }
-
-//    @Override
-//    public Short getMaxExamPoint() {
-//        return studentRepository.getMaxExamPoint();
-//    }
-//
-//    @Override
-//    public Float getMaxScholarship() {
-//        return studentRepository.getMaxScholarship();
-//    }
-//
-//    @Override
-//    public String getMaxDateOfBirth() {
-//        Calendar birth = studentRepository.getMaxDateOfBirth();
-//        String year = String.valueOf(birth.get(Calendar.YEAR));
-//        String month = String.valueOf(birth.get(Calendar.MONTH) + 1);
-//        String date = String.valueOf(birth.get(Calendar.DATE));
-//
-//        if(month.length()<2) month = 0 + month;
-//        if(date.length()<2) date = 0 + date;
-//
-//        return String.format("%s-%s-%s", year, month, date);
-//    }
-//
-//    @Override
-//    public String getMinDateOfBirth() {
-//        Calendar birth = studentRepository.getMinDateOfBirth();
-//        String year = String.valueOf(birth.get(Calendar.YEAR));
-//        String month = String.valueOf(birth.get(Calendar.MONTH) + 1);
-//        String date = String.valueOf(birth.get(Calendar.DATE));
-//
-//        if(month.length()<2) month = 0 + month;
-//        if(date.length()<2) date = 0 + date;
-//
-//        return String.format("%s-%s-%s", year, month, date);
-//    }
 
     @Override
     public List<Student> getStudentsByAttrAndGroupIdBySort(long studentNumber, String fullName, short examPointsFrom, short examPointsTo, String studentGroupName, Calendar dateOfBirthFrom, Calendar dateOfBirthTo, String city, float scholarshipFrom, float scholarshipTo, long studentGroupId, String sortBy) {

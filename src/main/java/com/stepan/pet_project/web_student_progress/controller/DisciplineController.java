@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * @author Cupriyanovich Stepan
+ * @version 1.0
+ */
+
 @Controller
 @RequestMapping("/discipline")
 public class DisciplineController {

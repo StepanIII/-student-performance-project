@@ -4,6 +4,11 @@ import org.springframework.data.domain.Sort;
 
 import java.util.Locale;
 
+/**
+ * @author Cupriyanovich Stepan
+ * @version 1.0
+ */
+
 public class MySort {
     public static Sort getSortByPassedArgument(String textForSort) {
         Sort sort;

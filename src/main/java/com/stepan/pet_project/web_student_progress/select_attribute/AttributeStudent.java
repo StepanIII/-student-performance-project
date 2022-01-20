@@ -12,6 +12,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+/**
+ * @author Cupriyanovich Stepan
+ * @version 1.0
+ */
+
 @Component
 @Data
 public class AttributeStudent implements Attribute{
@@ -24,18 +29,18 @@ public class AttributeStudent implements Attribute{
     private String fullName;
 
     private short examPointsFrom;
-    private short examPointsTo;
+    private short examPointsTo = 300;
 
     private String studentGroupName;
     private String facultyName;
 
-    private String dateOfBirthFrom;
-    private String dateOfBirthTo;
+    private String dateOfBirthFrom = "1950-01-01";;
+    private String dateOfBirthTo = "2023-01-01";;
 
     private String city;
 
     private float scholarshipFrom;
-    private float scholarshipTo;
+    private float scholarshipTo = 30000;
 
     private String sort;
 
@@ -43,27 +48,6 @@ public class AttributeStudent implements Attribute{
     private long facultyId;
 
     public AttributeStudent() {
-        this.studentNumber = 0;
-        this.fullName = "";
-
-        this.examPointsFrom = 0;
-        this.examPointsTo = 300;
-
-        this.dateOfBirthFrom = "1950-01-01";
-        this.dateOfBirthTo = "2023-01-01";
-
-        this.scholarshipFrom = 0;
-        this.scholarshipTo = 5000;
-
-        this.studentGroupName = "";
-        this.facultyName = "";
-
-        this.city = "";
-
-        this.sort = "";
-
-        this.groupId = 0;
-        this.facultyId = 0;
     }
 
     public Calendar getCalendarFrom() {
@@ -126,7 +110,7 @@ public class AttributeStudent implements Attribute{
         this.dateOfBirthTo = "2023-01-01";
 
         this.scholarshipFrom = 0;
-        this.scholarshipTo = 5000;
+        this.scholarshipTo = 30000;
 
         this.studentGroupName = "";
         this.facultyName = "";

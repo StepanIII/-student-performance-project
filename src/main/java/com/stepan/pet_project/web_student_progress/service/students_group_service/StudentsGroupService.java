@@ -1,13 +1,17 @@
 package com.stepan.pet_project.web_student_progress.service.students_group_service;
 
-import com.stepan.pet_project.web_student_progress.entity.Student;
 import com.stepan.pet_project.web_student_progress.entity.StudentsGroup;
 
 import java.util.Calendar;
 import java.util.List;
 
+/**
+ * @author Cupriyanovich Stepan
+ * @version 1.0
+ */
+
 public interface StudentsGroupService {
-    //Methods for StudentsGroup
+
     List<StudentsGroup> getAllGroups();
 
     StudentsGroup getGroupById(long id);
@@ -22,6 +26,4 @@ public interface StudentsGroupService {
 
     List<StudentsGroup> getStudentsGroupsByNumber(String groupNumber);
 
-    String getMinYearOfCreation();
-    String getMaxYearOfCreation();
 }

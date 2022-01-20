@@ -13,6 +13,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+/**
+ * @author Cupriyanovich Stepan
+ * @version 1.0
+ */
+
 @Entity
 @Table(name = "appraisals")
 @Data
@@ -46,7 +51,6 @@ public class Appraisal {
     private long studentNumber;
 
     @Transient
-    //@Min(value = 1, message = "Discipline must not be empty")
     private long disciplineId;
 
     @Transient

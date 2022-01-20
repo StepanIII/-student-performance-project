@@ -12,6 +12,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+/**
+ * @author Cupriyanovich Stepan
+ * @version 1.0
+ */
+
 @Data
 @Component
 public class AttributeStudentsGroup implements Attribute{
@@ -22,23 +27,14 @@ public class AttributeStudentsGroup implements Attribute{
     private String groupNumber;
     private String facultyName;
 
-    private String yearFrom;
-    private String yearTo;
+    private String yearFrom = "1950";
+    private String yearTo = "2023";
 
     private String sort;
     private long facultyId;
     private boolean fromUpdate;
 
     public AttributeStudentsGroup() {
-        this.groupNumber = "";
-        this.facultyName = "";
-
-        this.yearFrom = "1950";
-        this.yearTo = "2023";
-
-        this.sort = "";
-        this.facultyId = 0;
-        this.fromUpdate = false;
     }
 
     public Calendar getCalendarFrom() {

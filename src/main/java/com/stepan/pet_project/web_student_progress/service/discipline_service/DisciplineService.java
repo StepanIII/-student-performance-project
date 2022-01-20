@@ -5,6 +5,11 @@ import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
+/**
+ * @author Cupriyanovich Stepan
+ * @version 1.0
+ */
+
 public interface DisciplineService {
     List<Discipline> getAllDiscipline();
 

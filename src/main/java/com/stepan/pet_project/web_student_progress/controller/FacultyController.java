@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * @author Cupriyanovich Stepan
+ * @version 1.0
+ */
+
 @Controller
 @RequestMapping("/faculty")
 public class FacultyController {
@@ -64,11 +69,7 @@ public class FacultyController {
     public String deleteFaculty(@RequestParam(name = "id") long id) {
         List<Student> students = facultyService.getStudentsByFaculty(id);
 
-        //-------------------------------------------------------------------------------
-        for (Student student : students) {
-            appraisalService.deleteAppraisalsByStudentNumber(student.getStudentNumber());
-        }
-        //-------------------------------------------------------------------------------
+        for (Student student : students) appraisalService.deleteAppraisalsByStudentNumber(student.getStudentNumber());
 
         facultyService.deleteFacultyById(id);
         return "redirect:/faculty/select";

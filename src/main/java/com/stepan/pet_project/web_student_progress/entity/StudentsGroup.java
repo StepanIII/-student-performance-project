@@ -9,6 +9,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * @author Cupriyanovich Stepan
+ * @version 1.0
+ */
+
 @Entity
 @Table(name = "students_groups")
 @Data
@@ -37,7 +42,6 @@ public class StudentsGroup {
     private Calendar yearOfCreation;
 
     @Transient
-  //  @Min(value = 0, message = "Faculty must not be empty")
     private long facultyId;
 
     @Transient

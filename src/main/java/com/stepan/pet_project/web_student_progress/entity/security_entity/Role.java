@@ -1,11 +1,15 @@
 package com.stepan.pet_project.web_student_progress.entity.security_entity;
 
 import lombok.Data;
-import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
+
+/**
+ * @author Cupriyanovich Stepan
+ * @version 1.0
+ */
 
 @Entity
 @Table(name = "roles")

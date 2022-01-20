@@ -17,6 +17,11 @@ import javax.validation.Valid;
 import java.util.Calendar;
 import java.util.List;
 
+/**
+ * @author Cupriyanovich Stepan
+ * @version 1.0
+ */
+
 @Controller
 @RequestMapping("/appraisal")
 public class AppraisalController {

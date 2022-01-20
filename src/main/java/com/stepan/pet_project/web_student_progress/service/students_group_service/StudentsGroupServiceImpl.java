@@ -11,6 +11,11 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author Cupriyanovich Stepan
+ * @version 1.0
+ */
+
 @Service
 public class StudentsGroupServiceImpl implements StudentsGroupService{
 
@@ -22,7 +27,6 @@ public class StudentsGroupServiceImpl implements StudentsGroupService{
         return studentsGroupRepository.findAll();
     }
 
-    //Methods for StudentsGroup
     @Override
     public StudentsGroup getGroupById(long id) {
         StudentsGroup studentsGroup = null;
@@ -68,17 +72,5 @@ public class StudentsGroupServiceImpl implements StudentsGroupService{
     @Override
     public List<StudentsGroup> getStudentsGroupsByNumber(String groupNumber) {
         return studentsGroupRepository.getStudentsGroupsByNumber(groupNumber);
-    }
-
-    @Override
-    public String getMinYearOfCreation() {
-        int year = studentsGroupRepository.getMinYearOfCreation().get(Calendar.YEAR);
-        return String.valueOf(year);
-    }
-
-    @Override
-    public String getMaxYearOfCreation() {
-        int year = studentsGroupRepository.getMaxYearOfCreation().get(Calendar.YEAR);
-        return String.valueOf(year);
     }
 }

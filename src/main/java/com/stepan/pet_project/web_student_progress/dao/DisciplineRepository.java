@@ -8,6 +8,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * @author Cupriyanovich Stepan
+ * @version 1.0
+ */
+
 public interface DisciplineRepository extends JpaRepository<Discipline, Long> {
 
     @Transactional

@@ -20,6 +20,11 @@ import javax.validation.Valid;
 import java.util.Calendar;
 import java.util.List;
 
+/**
+ * @author Cupriyanovich Stepan
+ * @version 1.0
+ */
+
 @Controller
 @RequestMapping("/students_group")
 public class StudentsGroupController {
@@ -129,11 +134,7 @@ public class StudentsGroupController {
         List<Student> students = studentService.getStudentsByStudentsGroupId(id);
         long facultyId = studentsGroupService.getGroupById(id).getFaculty().getId();
 
-        //-------------------------------------------------------------------------------------
-        for (Student student : students) {
-            appraisalService.deleteAppraisalsByStudentNumber(student.getStudentNumber());
-        }
-        //------------------------------------------------------------------------------------
+        for (Student student : students) appraisalService.deleteAppraisalsByStudentNumber(student.getStudentNumber());
 
         studentsGroupService.deleteGroupById(id);
 
@@ -168,7 +169,6 @@ public class StudentsGroupController {
         } else {
             attributeStudentsGroup = attribute;
         }
-
 
         String groupNumber = attribute.getGroupNumber();
         String facultyName = attribute.getFacultyName();

@@ -9,6 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Calendar;
 import java.util.List;
 
+/**
+ * @author Cupriyanovich Stepan
+ * @version 1.0
+ */
+
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
     @Transactional(readOnly = true)
@@ -45,27 +50,8 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
             float scholarshipFrom, float scholarshipTo,
             Sort sort);
 
-//    @Transactional
-//    @Query("select max(student.examPoints) from Student as student")
-//    Short getMaxExamPoint();
-//
-//    @Transactional
-//    @Query("select max(student.scholarship) from Student as student")
-//    Float getMaxScholarship();
-//
-//    @Transactional
-//    @Query("select max(student.dateOfBirth) from Student as student")
-//    Calendar getMaxDateOfBirth();
-//
-//    @Transactional
-//    @Query("select min(student.dateOfBirth) from Student as student")
-//    Calendar getMinDateOfBirth();
-
     //Methods for StudentsGroup
     List<Student> findStudentsByStudentsGroup_Id(long id);
-
-
-    //void deleteStudentsByGroupId(long id);
 
     @Transactional(readOnly = true)
     @Query("select student from Student as student " +

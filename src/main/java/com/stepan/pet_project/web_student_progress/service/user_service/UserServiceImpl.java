@@ -5,6 +5,11 @@ import com.stepan.pet_project.web_student_progress.entity.security_entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author Cupriyanovich Stepan
+ * @version 1.0
+ */
+
 @Service
 public class UserServiceImpl implements UserService{
 

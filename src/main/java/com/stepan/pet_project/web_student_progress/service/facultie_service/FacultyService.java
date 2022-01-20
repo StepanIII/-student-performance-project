@@ -6,6 +6,11 @@ import com.stepan.pet_project.web_student_progress.entity.StudentsGroup;
 
 import java.util.List;
 
+/**
+ * @author Cupriyanovich Stepan
+ * @version 1.0
+ */
+
 public interface FacultyService {
     List<Faculty> getAllFaculty();
 

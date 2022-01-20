@@ -11,6 +11,11 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author Cupriyanovich Stepan
+ * @version 1.0
+ */
+
 @Service
 public class AppraisalServiceImpl implements AppraisalService{
 

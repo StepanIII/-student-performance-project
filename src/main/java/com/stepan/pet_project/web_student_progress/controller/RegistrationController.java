@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Collections;
 
+/**
+ * @author Cupriyanovich Stepan
+ * @version 1.0
+ */
+
 @Controller
 public class RegistrationController {
 
