@@ -32,18 +32,47 @@
      letter-spacing: 2px;
  }
 
- #main{
-     width: 30%;
-     margin-left: 1%;
+ #mainFaculties, #mainGroups, #mainFacultyGroups, #mainStudents, #mainDisciplines, #mainAppraisals{
      padding: 10px 2.5%;
      float: left;
+     background: transparent;
+ }
+
+ #mainFaculties{
+     width: 25%;
+     margin-left: 26%;
+ }
+
+ #mainGroups{
+     width: 28%;
+     margin-left: 24%;
+ }
+
+ #mainFacultyGroups{
+     width: 20%;
+     margin-left: 25%;
+ }
+
+ #mainStudents{
+     width: 50%;
+     margin-left: 5%;
+ }
+
+ #mainDisciplines{
+     width: 20%;
+     margin-left: 25%;
+ }
+
+ #mainAppraisals{
+     width: 25%;
+     margin-left: 15%;
  }
 
  #aside{
-     width: 15%;
-     padding: 10px 2.5%;
-     margin-right: 1%;
-     background: #071d42;
+     width: 13%;
+     padding: 10px 1%;
+     margin-right: 1.5%;
+     background: transparent;
      border: 2px solid #128200;
      border-radius: 10%;
      float: right;
@@ -53,14 +82,16 @@
 
  #left{
      width: 10%;
-     padding: 10px 2.5%;
+     margin-left: 1.5%;
+     padding: 10px 1.5%;
      float: left;
+     background: transparent;
  }
 
  #add{
      color: azure;
      position: relative;
-     top: 100px;
+     top: 40px;
      padding: 5% 2%;
      -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
      transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
@@ -115,8 +146,8 @@
      0 -1px 1px #128200;
  }
 
- table{
-     float: left;
+table{
+     float: contour;
      font-size: 20px;
      border-collapse: collapse;
      text-align: center;
