@@ -1,6 +1,4 @@
 # web-student-progress
-## Table of contents
-___
 
 ## Introduction
 ___
@@ -9,7 +7,7 @@ ___
 ## Reauirement
 - Java version 8 or higher
 - MySql
-- database created with the following template 
+- database created with the following template  https://github.com/StepanIII/web-student-progress/blob/master/db_creation.md
 ___
 
 ## Installing
