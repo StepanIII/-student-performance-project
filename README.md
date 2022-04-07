@@ -2,7 +2,7 @@
 
 ## Introduction
 ___
-This is a web application for students and teachers that allows students to track their progress, and teachers to make changes and assign grades. It is also possible to select and sort data. There is a registration and authentication functionality. There are three categories of access rights student, teacher and administrator. This application was developed on spring boot, MySql was used as a database management system. Hibernate was used to interact with the database.
+This is a web application for students and teachers that allows students to track their progress, and teachers to make changes and assign grades. It is also possible to select and sort data. There is a registration and authentication functionality. There are three categories of access rights student, teacher and administrator. This application was developed on Spring boot, MySql was used as a database management system. Hibernate was used to interact with the database.
 ___
 ## Reauirement
 - Java version 8 or higher
