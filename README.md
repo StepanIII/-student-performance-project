@@ -28,6 +28,8 @@ ___
 3. Follow the link http://localhost:8080/login.
 4. Register or log in or log in under one of the existing accounts:
     
-    1. Login - Admin, password - admin. 
-    2. Login - Teacher, password - teacher. 
-    3. Login - Student, password - student. 
+    a. Login - Admin, password - admin. 
+    
+    b. Login - Teacher, password - teacher. 
+    
+    c. Login - Student, password - student. 
