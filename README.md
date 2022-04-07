@@ -33,3 +33,5 @@ ___
     b. Login - Teacher, password - teacher. 
     
     c. Login - Student, password - student. 
+    
+    ![picture](https://github.com/StepanIII/web-student-progress/blob/master/src/main/resources/Screen/1.png?raw=true, "registration")
