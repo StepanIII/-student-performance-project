@@ -35,3 +35,12 @@ ___
     c. Login - Student, password - student. 
     
     ![picture](https://github.com/StepanIII/web-student-progress/blob/master/src/main/resources/Screen/1.png?raw=true, "registration")
+
+5. On the main page, go to the desired section.
+
+
+ ![picture](https://github.com/StepanIII/web-student-progress/blob/master/src/main/resources/Screen/2.png?raw=true, "home_page")
+
+6. View, select and add the data we need    
+
+![picture](https://github.com/StepanIII/web-student-progress/blob/master/src/main/resources/Screen/3.png?raw=true, "registration")
