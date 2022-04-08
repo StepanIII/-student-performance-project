@@ -1,17 +1,15 @@
 # web-student-progress
 
 ## Introduction
-___
 This is a web application for students and teachers that allows students to track their progress, and teachers to make changes and assign grades. It is also possible to select and sort data. There is a registration and authentication functionality. There are three categories of access rights student, teacher and administrator. This application was developed on Spring boot, MySql was used as a database management system. Hibernate was used to interact with the database.
-___
+
 ## Reauirement
 - Java version 8 or higher
 - MySql
 - database created with the following template  https://github.com/StepanIII/web-student-progress/blob/master/db_creation.md
-___
+
 
 ## Installing
-___
 1. Download the repository files (project) from the download section or clone this project by typing in the bash the following command:
    
 > git clone https://github.com/StepanIII/web-student-progress.git
@@ -20,7 +18,6 @@ ___
 3. In the application.properties file, specify the necessary data to connect to MySql
 
 ## Usage
-___
 1. Run MySql with the created database which is given in the requirements.
 2. Run the application.
 3. Follow the link http://localhost:8080/login.
